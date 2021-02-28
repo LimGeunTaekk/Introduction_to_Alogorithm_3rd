@@ -30,6 +30,49 @@
    
 ![병합정렬-의사코드](https://user-images.githubusercontent.com/70448161/92956042-2839a580-f4a1-11ea-8e34-8f6a53dfcc05.PNG)
 
+```python
+import math
+
+def Merge_Sort(arr,left,right):
+    
+    if left < right:
+        mid=math.floor((left+right)/2)
+        Merge_Sort(arr,left,mid)
+        Merge_Sort(arr,mid+1,right)
+        MERGE(arr,left,mid,right)
+
+def MERGE(arr,p,q,r):
+    n1=q-p+1
+    n2=r-q
+    L=[]
+    R=[]
+
+    for i in range(0,n1):
+        L.append(arr[p+i])
+    for j in range(0,n2):
+        R.append(arr[q+j+1])
+    
+    L.append(math.inf)
+    R.append(math.inf)
+
+    i=0
+    j=0
+
+    for k in range(p,r+1):
+        if L[i]<=R[j]:
+            arr[k]=L[i]
+            i=i+1
+        elif L[i]>R[j]:
+            arr[k]=R[j]
+            j=j+1
+
+if __name__ == "__main__":
+    arr=[15,78,64,29,34,76,18,39,73]
+    print("Before Sorting : {}".format(arr))
+    Merge_Sort(arr,0,len(arr)-1)
+    print("After Sorting  : {}".format(arr))
+```
+
 ---
 
 - **정렬방식**
@@ -61,7 +104,7 @@
   
   ![캡처](https://user-images.githubusercontent.com/70448161/92990724-9621b380-f519-11ea-9f74-5dc433c19f39.PNG)
   
-  이제 마스터 정리를 이용해서 구해주면 T(n)=Θ(n*logn)된다
+  이제 **마스터 정리**를 이용해서 구해주면 T(n)=Θ(n*logn)된다(마스터정리는 4장에서 더 자세히 알아본다.)
   
   
 
